@@ -2,9 +2,1110 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mi Landing Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocuSmart – Gestión Documental Inteligente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #060D1A;
+      --bg2: #0B1525;
+      --accent: #0EA5E9;
+      --accent-light: #38BDF8;
+      --text: #E8EEF8;
+      --text-muted: rgba(232,238,248,0.55);
+      --text-faint: rgba(232,238,248,0.35);
+      --border: rgba(255,255,255,0.08);
+      --border-accent: rgba(14,165,233,0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 48px;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(6,13,26,0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: 0px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 32px; height: 32px;
+      background: var(--accent);
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-icon svg { width: 17px; height: 17px; }
+    .logo span { color: var(--accent-light); }
+
+    .nav-links {
+      display: flex; gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(232,238,248,0.6);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent-light); }
+
+    .btn-nav {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 9px 20px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-nav:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    #inicio {
+      padding: 100px 48px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 64px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(14,165,233,0.12);
+      border: 0.5px solid rgba(14,165,233,0.3);
+      color: var(--accent-light);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-dot {
+      width: 7px; height: 7px;
+      background: var(--accent-light);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    h1 {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: clamp(34px, 5vw, 52px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: 0px;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    h1 span { color: var(--accent-light); }
+
+    .hero-sub {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 13px 26px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: transparent;
+      color: rgba(232,238,248,0.75);
+      border: 0.5px solid rgba(255,255,255,0.2);
+      padding: 13px 26px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 400;
+      cursor: pointer;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover { border-color: var(--accent-light); color: var(--accent-light); }
+
+    /* Hero visual */
+    .hero-visual {
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+    }
+
+    .doc-card {
+      background: rgba(255,255,255,0.05);
+      border: 0.5px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .doc-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .doc-icon svg { width: 17px; height: 17px; }
+    .doc-icon.blue { background: rgba(14,165,233,0.18); color: var(--accent-light); }
+    .doc-icon.green { background: rgba(16,185,129,0.18); color: #34D399; }
+    .doc-icon.amber { background: rgba(245,158,11,0.18); color: #FCD34D; }
+
+    .doc-info { flex: 1; min-width: 0; }
+    .doc-name { font-size: 13px; font-weight: 500; color: #fff; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .doc-meta { font-size: 11px; color: rgba(232,238,248,0.4); }
+
+    .doc-status {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .doc-status.ok { background: rgba(16,185,129,0.15); color: #34D399; }
+    .doc-status.sync { background: rgba(14,165,233,0.15); color: var(--accent-light); }
+    .doc-status.proc { background: rgba(245,158,11,0.15); color: #FCD34D; }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .stat-mini {
+      background: rgba(255,255,255,0.04);
+      border: 0.5px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 12px 8px;
+      text-align: center;
+    }
+
+    .stat-mini-val {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--accent-light);
+      margin-bottom: 3px;
+    }
+
+    .stat-mini-label { font-size: 10px; color: rgba(232,238,248,0.4); line-height: 1.4; }
+
+    /* ── SECTION BASE ── */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 48px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent-light);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.3px;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .divider {
+      height: 0.5px;
+      background: var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── PROBLEMA ── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .prob-card {
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .prob-card:hover {
+      border-color: var(--border-accent);
+      background: rgba(14,165,233,0.04);
+    }
+
+    .prob-num {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 34px;
+      font-weight: 800;
+      color: rgba(56,189,248,0.18);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .prob-title { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 8px; }
+    .prob-desc { font-size: 13px; color: rgba(232,238,248,0.48); line-height: 1.65; }
+
+    /* ── FEATURES ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .feat-card {
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: all 0.25s;
+    }
+
+    .feat-card:hover {
+      background: rgba(14,165,233,0.05);
+      border-color: var(--border-accent);
+    }
+
+    .feat-icon {
+      width: 44px; height: 44px;
+      background: rgba(14,165,233,0.12);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+      color: var(--accent-light);
+    }
+
+    .feat-icon svg { width: 21px; height: 21px; }
+    .feat-title { font-size: 16px; font-weight: 500; color: #fff; margin-bottom: 8px; }
+    .feat-desc { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+
+    /* ── PROPUESTA DE VALOR ── */
+    .valor-wrap {
+      margin-top: 48px;
+      background: rgba(14,165,233,0.06);
+      border: 0.5px solid rgba(14,165,233,0.2);
+      border-radius: 20px;
+      padding: 36px 40px;
+    }
+
+    .valor-lead {
+      font-size: 17px;
+      color: rgba(232,238,248,0.88);
+      line-height: 1.75;
+      margin-bottom: 32px;
+      font-weight: 300;
+      max-width: 780px;
+    }
+
+    .valor-cols {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 24px;
+    }
+
+    .valor-col h4 {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent-light);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 0.5px solid rgba(14,165,233,0.2);
+    }
+
+    .valor-col ul { list-style: none; }
+
+    .valor-col ul li {
+      font-size: 13px;
+      color: rgba(232,238,248,0.58);
+      line-height: 1.6;
+      margin-bottom: 9px;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .valor-col ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent-light);
+      font-size: 11px;
+    }
+
+    /* ── MERCADO ── */
+    .market-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 52px;
+      margin-top: 48px;
+      align-items: start;
+    }
+
+    .stat-big {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.04);
+      border: 0.5px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 18px;
+    }
+
+    .stat-val {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--accent-light);
+      letter-spacing: -0.3px;
+      margin-bottom: 5px;
+      line-height: 1.1;
+    }
+
+    .stat-lbl { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+    .market-desc p {
+      font-size: 15px;
+      color: rgba(232,238,248,0.62);
+      line-height: 1.8;
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+
+    .check-list { list-style: none; }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: rgba(232,238,248,0.62);
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .check-dot {
+      width: 18px; height: 18px;
+      background: rgba(14,165,233,0.15);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
+    }
+
+    .check-dot::after {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent-light);
+      border-radius: 50%;
+    }
+
+    /* ── PLANES ── */
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+      margin-top: 48px;
+    }
+
+    .plan {
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 24px;
+      transition: border-color 0.2s;
+      position: relative;
+    }
+
+    .plan:hover { border-color: var(--border-accent); }
+
+    .plan.featured {
+      background: rgba(14,165,233,0.08);
+      border: 1px solid rgba(14,165,233,0.38);
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .plan-desc { font-size: 12px; color: rgba(232,238,248,0.4); margin-bottom: 20px; }
+
+    .plan-price {
+      margin-bottom: 22px;
+      padding-bottom: 20px;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .plan-amount {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent-light);
+      letter-spacing: 0px;
+    }
+
+    .plan-period { font-size: 12px; color: rgba(232,238,248,0.38); margin-left: 4px; }
+
+    .plan-features { list-style: none; }
+
+    .plan-features li {
+      font-size: 13px;
+      color: rgba(232,238,248,0.58);
+      margin-bottom: 9px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .plan-features li::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--accent-light);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── EQUIPO ── */
+    .team {
+      display: flex;
+      gap: 20px;
+      margin-top: 48px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .member {
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      width: 220px;
+      transition: border-color 0.2s;
+    }
+
+    .member:hover { border-color: var(--border-accent); }
+
+    .avatar {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: rgba(14,165,233,0.15);
+      border: 1px solid rgba(14,165,233,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent-light);
+      margin: 0 auto 14px;
+    }
+
+    .member-name { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 5px; }
+    .member-email { font-size: 11px; color: rgba(232,238,248,0.32); word-break: break-all; }
+
+    /* ── CTA ── */
+    .cta-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 48px;
+    }
+
+    .cta-box {
+      background: rgba(14,165,233,0.07);
+      border: 0.5px solid rgba(14,165,233,0.2);
+      border-radius: 24px;
+      padding: 64px 48px;
+      text-align: center;
+    }
+
+    .cta-box h2 {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.3px;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+
+    .cta-box h2 span { color: var(--accent-light); }
+
+    .cta-box p {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 0.5px solid rgba(255,255,255,0.07);
+      padding: 36px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-logo {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .footer-logo span { color: var(--accent-light); }
+
+    .footer-text { font-size: 12px; color: rgba(232,238,248,0.28); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      #inicio { grid-template-columns: 1fr; padding: 60px 24px 48px; gap: 40px; }
+      h1 { font-size: 38px; }
+      .section { padding: 60px 24px; }
+      .section-title { font-size: 28px; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .valor-cols { grid-template-columns: 1fr; }
+      .market-row { grid-template-columns: 1fr; gap: 32px; }
+      .plans { grid-template-columns: 1fr; }
+      .cta-section { padding: 60px 24px; }
+      .cta-box { padding: 40px 24px; }
+      .cta-box h2 { font-size: clamp(22px, 5vw, 32px) !important; }
+      footer { padding: 28px 24px; flex-direction: column; text-align: center; }
+      .valor-wrap { padding: 28px 24px; }
+      .stat-row { grid-template-columns: repeat(3,1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .stat-big { grid-template-columns: 1fr 1fr; }
+      nav { padding: 14px 20px; }
+      #inicio { padding: 48px 20px 40px; }
+      .section { padding: 52px 20px; }
+      .hero-btns { flex-direction: column; align-items: flex-start; }
+      .hero-btns button { width: 100%; }
+      .stat-row { grid-template-columns: repeat(3,1fr); gap: 6px; }
+      .stat-mini { padding: 10px 4px; }
+      .stat-mini-val { font-size: 16px; }
+      .stat-mini-label { font-size: 9px; }
+      .team { flex-direction: column; align-items: center; }
+      .member { width: 100%; max-width: 320px; }
+      .cta-btns { flex-direction: column; }
+      .cta-btns button { width: 100%; }
+      .problem-grid { grid-template-columns: 1fr; gap: 12px; }
+      .plans { gap: 24px; }
+      .plan.featured { margin-top: 16px; }
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; display: block; }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(6,13,26,0.98);
+      border-bottom: 0.5px solid var(--border);
+      padding: 12px 24px 20px;
+      gap: 0;
+      position: sticky;
+      top: 57px;
+      z-index: 99;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: rgba(232,238,248,0.7);
+      text-decoration: none;
+      font-size: 15px;
+      padding: 12px 0;
+      border-bottom: 0.5px solid var(--border);
+      display: block;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    @media (max-width: 900px) {
+      .hamburger { display: flex; }
+      .btn-nav { display: none; }
+    }
+  </style>
 </head>
 <body>
-  <h1>¡Hola! Mi landing page está en construcción 🚀</h1>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#inicio" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="9" y1="13" x2="15" y2="13"/>
+          <line x1="9" y1="17" x2="12" y2="17"/>
+        </svg>
+      </div>
+      Docu<span>Smart</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#problema">Problema</a></li>
+      <li><a href="#solucion">Solución</a></li>
+      <li><a href="#mercado">Mercado</a></li>
+      <li><a href="#planes">Planes</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+    </ul>
+    <button class="btn-nav" onclick="document.getElementById('equipo').scrollIntoView({behavior:'smooth'})">Comenzar gratis</button>
+    <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#problema" onclick="document.getElementById('mobileMenu').classList.remove('open')">Problema</a>
+    <a href="#solucion" onclick="document.getElementById('mobileMenu').classList.remove('open')">Solución</a>
+    <a href="#mercado" onclick="document.getElementById('mobileMenu').classList.remove('open')">Mercado</a>
+    <a href="#planes" onclick="document.getElementById('mobileMenu').classList.remove('open')">Planes</a>
+    <a href="#equipo" onclick="document.getElementById('mobileMenu').classList.remove('open')">Equipo</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="inicio">
+    <div>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Gestión Documental Inteligente
+      </div>
+      <h1>Tu empresa, <span>sin papel</span> y sin caos</h1>
+      <p class="hero-sub">DocuSmart digitaliza y automatiza la gestión documental de tu empresa. Reduce costos operativos, elimina el desorden y accede a tu información desde cualquier lugar, de forma rápida y segura.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="document.getElementById('planes').scrollIntoView({behavior:'smooth'})">Solicitar demo</button>
+        <button class="btn-secondary" onclick="document.getElementById('solucion').scrollIntoView({behavior:'smooth'})">Ver cómo funciona →</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="doc-card">
+        <div class="doc-icon blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div class="doc-info">
+          <div class="doc-name">Contrato_proveedor_2025.pdf</div>
+          <div class="doc-meta">Modificado hace 2 min · 1.4 MB</div>
+        </div>
+        <span class="doc-status ok">Guardado</span>
+      </div>
+      <div class="doc-card">
+        <div class="doc-icon green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        </div>
+        <div class="doc-info">
+          <div class="doc-name">Nómina_Abril_2025.xlsx</div>
+          <div class="doc-meta">Accedido por 3 usuarios · 892 KB</div>
+        </div>
+        <span class="doc-status sync">Sincronizado</span>
+      </div>
+      <div class="doc-card">
+        <div class="doc-icon amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="doc-info">
+          <div class="doc-name">Acta_Reunión_Junta.docx</div>
+          <div class="doc-meta">Indexando con OCR...</div>
+        </div>
+        <span class="doc-status proc">Procesando</span>
+      </div>
+      <div class="stat-row">
+        <div class="stat-mini"><div class="stat-mini-val">2M+</div><div class="stat-mini-label">Pymes en Colombia</div></div>
+        <div class="stat-mini"><div class="stat-mini-val">78%</div><div class="stat-mini-label">Empleo nacional</div></div>
+        <div class="stat-mini"><div class="stat-mini-val">99%</div><div class="stat-mini-label">Son Pymes</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROBLEMA -->
+  <section id="problema" class="section">
+    <div class="section-label">El problema</div>
+    <h2 class="section-title">Las Pymes pierden tiempo y dinero<br>con archivos físicos</h2>
+    <p class="section-sub">La gestión documental manual genera ineficiencia, costos elevados y riesgos que frenan el crecimiento de las empresas colombianas.</p>
+    <div class="problem-grid">
+      <div class="prob-card">
+        <div class="prob-num">01</div>
+        <div class="prob-title">Pérdida de documentos</div>
+        <div class="prob-desc">Archivos físicos extraviados, desorden en carpetas digitales y falta de trazabilidad ponen en riesgo la operación.</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-num">02</div>
+        <div class="prob-title">Procesos manuales lentos</div>
+        <div class="prob-desc">Buscar, archivar y compartir documentos consume horas valiosas que podrían destinarse a tareas productivas.</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-num">03</div>
+        <div class="prob-title">Altos costos operativos</div>
+        <div class="prob-desc">Papel, impresión, almacenamiento físico y errores humanos generan gastos evitables que afectan la rentabilidad.</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-num">04</div>
+        <div class="prob-title">Resistencia al cambio</div>
+        <div class="prob-desc">Muchas Pymes desean modernizarse pero no tienen claridad sobre qué solución tecnológica adoptar ni cómo implementarla.</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-num">05</div>
+        <div class="prob-title">Trabajo remoto limitado</div>
+        <div class="prob-desc">Sin acceso digital a los documentos, la colaboración entre equipos y el trabajo remoto se vuelven casi imposibles.</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-num">06</div>
+        <div class="prob-title">Incumplimiento normativo</div>
+        <div class="prob-desc">La Ley de Protección de Datos y normas de archivo digital exigen controles que los sistemas manuales no pueden garantizar.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SOLUCIÓN -->
+  <section id="solucion" class="section">
+    <div class="section-label">Nuestra solución</div>
+    <h2 class="section-title">Una plataforma que transforma<br>tu gestión documental</h2>
+    <p class="section-sub">DocuSmart centraliza, automatiza y protege todos los documentos de tu empresa en la nube, con herramientas colaborativas e inteligencia integrada.</p>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        </div>
+        <div class="feat-title">Almacenamiento en la nube</div>
+        <div class="feat-desc">Todos tus documentos en un solo lugar, accesibles desde cualquier dispositivo y ubicación, con total seguridad y respaldo automático.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="feat-title">Búsqueda inteligente con IA</div>
+        <div class="feat-desc">Encuentra cualquier documento en segundos usando tecnología OCR e inteligencia artificial para indexar texto dentro de archivos escaneados.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="feat-title">Herramientas colaborativas</div>
+        <div class="feat-desc">Múltiples usuarios trabajando en simultáneo, con permisos diferenciados, comentarios y control de versiones para una colaboración fluida.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div class="feat-title">Acceso seguro y auditado</div>
+        <div class="feat-desc">Autenticación segura, cifrado de datos y registro de actividad que garantizan el cumplimiento de la normativa colombiana de protección de datos.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="feat-title">Automatización de procesos</div>
+        <div class="feat-desc">Flujos de aprobación, alertas de vencimiento y organización automática de archivos que eliminan tareas repetitivas y reducen errores humanos.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="feat-title">Reportes y control en tiempo real</div>
+        <div class="feat-desc">Paneles de control con estadísticas de uso, actividad por usuario y estado documental que apoyan la toma de decisiones gerenciales.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROPUESTA DE VALOR -->
+  <section id="valor" class="section">
+    <div class="section-label">Propuesta de valor</div>
+    <h2 class="section-title">Deseable, viable y factible</h2>
+    <p class="section-sub">DocuSmart está diseñado para resolver necesidades reales de las Pymes colombianas con una solución tecnológicamente factible, comercialmente viable y genuinamente deseada.</p>
+    <div class="valor-wrap">
+      <p class="valor-lead">DocuSmart permite a las Pymes gestionar sus documentos de manera rápida, segura y automatizada, reduciendo el uso de papel, optimizando procesos administrativos y mejorando la productividad mediante una plataforma digital fácil de usar y accesible desde cualquier lugar.</p>
+      <div class="valor-cols">
+        <div class="valor-col">
+          <h4>Deseable</h4>
+          <ul>
+            <li>Acceso rápido y seguro a documentos</li>
+            <li>Ahorro significativo de tiempo</li>
+            <li>Reducción de costos operativos</li>
+            <li>Mayor organización empresarial</li>
+            <li>Trabajo colaborativo eficiente</li>
+          </ul>
+        </div>
+        <div class="valor-col">
+          <h4>Viable</h4>
+          <ul>
+            <li>Modelo SaaS de suscripción mensual</li>
+            <li>Alta demanda en el mercado Pyme</li>
+            <li>Transformación digital en crecimiento</li>
+            <li>Segmento con capacidad de pago</li>
+            <li>Mercado de 2M+ empresas en Colombia</li>
+          </ul>
+        </div>
+        <div class="valor-col">
+          <h4>Factible</h4>
+          <ul>
+            <li>Tecnologías de nube existentes</li>
+            <li>Inicio con funciones básicas escalables</li>
+            <li>Sin infraestructura física requerida</li>
+            <li>OCR y automatización disponibles</li>
+            <li>Actualización constante de funciones</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- MERCADO -->
+  <section id="mercado" class="section">
+    <div class="section-label">Tamaño del mercado</div>
+    <h2 class="section-title">Un mercado enorme<br>con necesidades urgentes</h2>
+    <div class="market-row">
+      <div class="stat-big">
+        <div class="stat-card"><div class="stat-val">2M+</div><div class="stat-lbl">Empresas y unidades económicas en Colombia (DANE)</div></div>
+        <div class="stat-card"><div class="stat-val">99%</div><div class="stat-lbl">Corresponden a micro, pequeñas y medianas empresas</div></div>
+        <div class="stat-card"><div class="stat-val">78%</div><div class="stat-lbl">Del empleo nacional generado por Pymes colombianas</div></div>
+        <div class="stat-card"><div class="stat-val" style="font-size:18px;line-height:1.4">Bogotá · Medellín · Cali</div><div class="stat-lbl">Ciudades objetivo con mayor acceso a tecnología</div></div>
+      </div>
+      <div class="market-desc">
+        <p>El mercado objetivo de DocuSmart representa la gran mayoría del tejido empresarial colombiano. Las Pymes en sectores de comercio, servicios y contabilidad, con 1 a 50 empleados, son quienes más necesitan herramientas de digitalización.</p>
+        <p>La segmentación confirma que estos clientes buscan optimizar tiempo, reducir costos y están abiertos a la tecnología — exactamente lo que DocuSmart ofrece.</p>
+        <ul class="check-list">
+          <li><span class="check-dot"></span>Sector terciario (servicios) en plena transformación digital</li>
+          <li><span class="check-dot"></span>Políticas de gobierno digital en Colombia impulsan la adopción</li>
+          <li><span class="check-dot"></span>Alta aceptación del trabajo remoto y herramientas digitales</li>
+          <li><span class="check-dot"></span>Tecnología de nube y OCR ampliamente disponible y asequible</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PLANES -->
+  <section id="planes" class="section">
+    <div class="section-label">Modelo de negocio</div>
+    <h2 class="section-title">Planes SaaS para cada etapa<br>de tu empresa</h2>
+    <p class="section-sub">Suscripción mensual sin contratos largos. Comienza con lo básico y escala a medida que tu empresa crece.</p>
+    <div class="plans">
+      <div class="plan">
+        <div class="plan-name">Básico</div>
+        <div class="plan-desc">Ideal para microempresas</div>
+        <div class="plan-price">
+          <span class="plan-amount">$49.900</span><span class="plan-period">COP/mes</span>
+        </div>
+        <ul class="plan-features">
+          <li>Hasta 3 usuarios</li>
+          <li>5 GB de almacenamiento</li>
+          <li>Búsqueda básica de documentos</li>
+          <li>Soporte por correo electrónico</li>
+          <li>Acceso móvil y web</li>
+        </ul>
+      </div>
+      <div class="plan featured">
+        <div class="plan-badge">Más popular</div>
+        <div class="plan-name">Profesional</div>
+        <div class="plan-desc">Para Pymes en crecimiento</div>
+        <div class="plan-price">
+          <span class="plan-amount">$129.900</span><span class="plan-period">COP/mes</span>
+        </div>
+        <ul class="plan-features">
+          <li>Hasta 15 usuarios</li>
+          <li>50 GB de almacenamiento</li>
+          <li>Búsqueda inteligente con OCR</li>
+          <li>Herramientas colaborativas</li>
+          <li>Automatización de flujos</li>
+          <li>Soporte prioritario</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <div class="plan-name">Empresarial</div>
+        <div class="plan-desc">Para empresas medianas</div>
+        <div class="plan-price">
+          <span class="plan-amount">$299.900</span><span class="plan-period">COP/mes</span>
+        </div>
+        <ul class="plan-features">
+          <li>Usuarios ilimitados</li>
+          <li>500 GB de almacenamiento</li>
+          <li>IA avanzada y reportes</li>
+          <li>Integraciones con ERP/CRM</li>
+          <li>Cumplimiento normativo GDPR</li>
+          <li>Gerente de cuenta dedicado</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EQUIPO -->
+  <section id="equipo" class="section" style="text-align:center;">
+    <div class="section-label">El equipo</div>
+    <h2 class="section-title">Quiénes somos</h2>
+    <p class="section-sub" style="margin:0 auto 0;">Grupo 26 — Estudiantes de Creación de Empresas 1, Corporación Unificada Nacional de Educación Superior (CUN) · 2025</p>
+    <div class="team">
+      <div class="member">
+        <div class="avatar">CQ</div>
+        <div class="member-name">Cristian Daniel Quevedo Mape</div>
+        <div class="member-email">Cristian.quevedo@cun.edu.co</div>
+      </div>
+      <div class="member">
+        <div class="avatar">GD</div>
+        <div class="member-name">Gabriel Starsky Duarte Tovar</div>
+        <div class="member-email">gabriel.duartet@cun.edu.co</div>
+      </div>
+      <div class="member">
+        <div class="avatar">JM</div>
+        <div class="member-name">Julieth Andrea Martínez Monsalve</div>
+        <div class="member-email">julieth.martinezm@cun.edu.co</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-box">
+      <h2>¿Listo para <span>digitalizar</span><br>tu empresa?</h2>
+      <p>Únete a las Pymes colombianas que ya están ahorrando tiempo y reduciendo costos con DocuSmart.</p>
+      <div class="cta-btns">
+        <button class="btn-primary" style="padding:14px 32px;font-size:16px;" onclick="document.getElementById('planes').scrollIntoView({behavior:'smooth'})">Solicitar demo gratuita</button>
+        <button class="btn-secondary" style="padding:14px 32px;font-size:16px;" onclick="document.getElementById('solucion').scrollIntoView({behavior:'smooth'})">Conocer más →</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Docu<span>Smart</span></div>
+    <div class="footer-text">Gestión documental inteligente · Grupo 26 · CUN 2025 · Creación de Empresas 1</div>
+  </footer>
+
 </body>
 </html>
