@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>DocuSmart – Gestión Documental Inteligente</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -306,6 +306,25 @@
       background: var(--border);
       max-width: 1100px;
       margin: 0 auto;
+    }
+
+    /* ── VIDEO ── */
+    .video-wrap {
+      margin-top: 48px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 0.5px solid var(--border-accent);
+      box-shadow: 0 8px 40px rgba(14,165,233,0.12);
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
     }
 
     /* ── PROBLEMA ── */
@@ -796,7 +815,7 @@
     <div>
       <div class="badge">
         <span class="badge-dot"></span>
-        Gestión Documental Inteligente
+        Gestión Documental Inteligente · SaaS para Pymes
       </div>
       <h1>Tu empresa, <span>sin papel</span> y sin caos</h1>
       <p class="hero-sub">DocuSmart digitaliza y automatiza la gestión documental de tu empresa. Reduce costos operativos, elimina el desorden y accede a tu información desde cualquier lugar, de forma rápida y segura.</p>
@@ -892,6 +911,17 @@
     <div class="section-label">Nuestra solución</div>
     <h2 class="section-title">Una plataforma que transforma<br>tu gestión documental</h2>
     <p class="section-sub">DocuSmart centraliza, automatiza y protege todos los documentos de tu empresa en la nube, con herramientas colaborativas e inteligencia integrada.</p>
+
+    <!-- VIDEO -->
+    <div class="video-wrap">
+      <iframe
+        src="https://www.youtube.com/embed/xMpUWO_c2qw"
+        title="DocuSmart – Cómo funciona"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+
     <div class="features-grid">
       <div class="feat-card">
         <div class="feat-icon">
